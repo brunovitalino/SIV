@@ -8,7 +8,6 @@ namespace Dados
 {
     class Conexao
     {
-        private static String senha = "";
-        public static String Cn = "Server=localhost; Database=siv; Uid=root; Pwd="+senha+";";
+        public static String Cn = "server=localhost;user id=root;password=123;persistsecurityinfo=True;database=dbsiv"; //"Server=localhost;Uid=root;Pwd=123;Database=dbsiv;"; //server=localhost;user id=root;password=123;persistsecurityinfo=True;database=dbsiv
     }
 }
