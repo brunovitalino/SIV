@@ -67,7 +67,8 @@ namespace Dados
         }
 
         //Metodo listar
-        public DataTable ListarSemSP()
+
+        public DataTable ListarSemSP() //Listagem sem usar stored procedures
         {
             DataTable DTResultado = new DataTable("funcionario");
             MySqlConnection SqlCon = new MySqlConnection();
@@ -89,8 +90,8 @@ namespace Dados
 
             return DTResultado;
         }
-        //Listagem usando stored procedures
-        public DataTable Listar()
+
+        public DataTable Listar() //Listagem usando stored procedures
         {
             DataTable DTResultado = new DataTable("funcionario");
             MySqlConnection SqlCon = new MySqlConnection();
