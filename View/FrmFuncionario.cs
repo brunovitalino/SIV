@@ -29,10 +29,6 @@ namespace View
         {
             this.Top = 0;
             this.Left = 0;
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
             this.Listar();
         }
     }

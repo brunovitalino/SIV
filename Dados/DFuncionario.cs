@@ -8,6 +8,8 @@ using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
 
+using MySql.Data.MySqlClient;
+
 namespace Dados
 {
     public class DFuncionario
@@ -65,20 +67,43 @@ namespace Dados
         }
 
         //Metodo listar
-        public DataTable Listar()
+        public DataTable ListarSemSP()
         {
             DataTable DTResultado = new DataTable("funcionario");
-            SqlConnection SqlCon = new SqlConnection();
+            MySqlConnection SqlCon = new MySqlConnection();
 
             try
             {
-                SqlCon.ConnectionString = Conexao.Cn;
-                SqlCommand SqlCmd = new SqlCommand();
+                SqlCon.ConnectionString = Conexao.myCredenciais;
+                MySqlCommand SqlCmd = SqlCon.CreateCommand();
+                SqlCmd.CommandText =    "SELECT * FROM Funcionario " +
+                                        "ORDER BY id DESC LIMIT 200;";
+                //SqlCon.Open();
+                MySqlDataAdapter SqlAdp = new MySqlDataAdapter(SqlCmd);
+                SqlAdp.Fill(DTResultado);
+            }
+            catch (Exception e)
+            {
+                DTResultado = null;
+            }
+
+            return DTResultado;
+        }
+        //Listagem usando stored procedures
+        public DataTable Listar()
+        {
+            DataTable DTResultado = new DataTable("funcionario");
+            MySqlConnection SqlCon = new MySqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexao.myCredenciais;
+                MySqlCommand SqlCmd = new MySqlCommand();
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "splistar_funcionario";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                SqlDataAdapter SqlDA = new SqlDataAdapter(SqlCmd);
+                MySqlDataAdapter SqlDA = new MySqlDataAdapter(SqlCmd);
                 SqlDA.Fill(DTResultado);
             }
             catch (Exception e)

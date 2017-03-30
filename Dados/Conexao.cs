@@ -8,6 +8,7 @@ namespace Dados
 {
     class Conexao
     {
-        public static String Cn = "server=localhost;user id=root;password=123;persistsecurityinfo=True;database=dbsiv"; //"Server=localhost;Uid=root;Pwd=123;Database=dbsiv;"; //server=localhost;user id=root;password=123;persistsecurityinfo=True;database=dbsiv
+        //Informacoes basicas para se conectar ao nosso Banco de Dados mySql
+        public static String myCredenciais = "Data Source=localhost; port=3306; Initial Catalog=dbsiv; User ID=root; Pwd=123";
     }
 }
